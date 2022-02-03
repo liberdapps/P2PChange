@@ -10,7 +10,7 @@
  3. Bob sees the offer and decides to take it by calling a method in the smart contract.
  4. The smart contract will automatically lock Alice’s stablecoins during a time T1, so that Alice won’t be able to withdraw her stablecoins or make changes to the terms until T1 runs out.
  5. Bob will have T1 time to transfer the exact amount of Bitcoins to Alice's one-time public Bitcoin address, and signal to the smart contract that he has made the payment.
-    - If Bob never sends the Bitcoins or never marks the trade as paid, after T1, Alice will be able to cancel the trade, unlocking their stablecoins and also getting Bob’s security deposit as a punishment to Bob not following the terms.
+    - If Bob never marks the trade as paid, after T1, Alice will be able to cancel the trade, unlocking her stablecoins.
  6. Once Bob marks the trade as paid, Alice will have a time T2 to verify that the payment has been correctly made and either confirm or reject the trade.
     - If Alice doesn't act before T2 expires, the contract will automatically allow Bob to withdraw Alice's stablecoins, so Alice has the incentive to act on time.
  7. If things go well, Alice can confirm the trade, transferring the stablecoins to Bob and also refunding his security deposit. Alice will be able withdraw her Bitcoins at anytime using her private key.

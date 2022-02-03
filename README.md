@@ -1,4 +1,4 @@
-# SwapBTC - Peer-to-Peer and non-custodial Bitcoin <-> Stablecoin swap
+# SwapBTC - Peer-to-Peer and non-custodial Bitcoin <-> Stablecoin exchange
 
 ## Scenario
 * Alice has stablecoins (USDT, USDC, BSUD, DAI or other) and wants to buy Bitcoins.

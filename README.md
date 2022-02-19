@@ -45,4 +45,17 @@
       * 0.75% is distributed proportionally among the shareholders, including Alice and Bob.
 
  
+## Example 1
+* Alice has 500 shares, Bob has 0 shares, Charlie has 500 shares in the platform.
+* Alice locks 2000 USDT in the platform, offering 1000 USDT per Bitcoin.
+* Bob decides to take 500 USDT from Alice's offer.
+* The platform generates a new Bitcoin address, and instructs Bob to send 0.5 BTC (500 USDT / 1000 USDT) to that address within 30 minutes.
+* Bob sends 0.5 BTC to that address before the timeout.
+* Alice identifies the payment and releases the stablecoins to Bob.'
+* Alice and Bob get 500 shares each, so now Alice has 1000 shares, Bob has 500 shares and Charlie has 500 shares.
+* A fee of 1.25 USDT (0.25% of 500 USDT) is taken and goes to the smart contract operator.
+* A fee of 3.75 USDT (0.75% of 500 USDT) is taken and is distributed proportionally among the sharesholders:
+  - Alice gets 3.75 x 50% (1000 shares / 2000 total shares) = 1.875 USDT.
+  - Bob gets 3.75 x 25% (500 shares / 2000 total shares) = 0.9375 USDT.
+  - Alice gets 3.75 x 25% (500 shares / 2000 total shares) = 0.9375 USDT.
 

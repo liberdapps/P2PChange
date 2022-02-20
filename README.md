@@ -12,8 +12,10 @@
   - In order to minimize the trust needed on the operator, the smart contract will only allow the operator to act if parties can't complete the trade after a reasonable time.
 
 ## Incentives
-* After a successful trade, both Alice and Bob will receive shares in the platform.
-* After any successful trade, a portion of the trading fees (paid in stablecoins) will be distributed as dividends among the shareholders, proportional to the amount of shares they hold.
+* Users of the platform will be rewarded with shares on every exchange they make.
+* A 1% fee will be taken on top of the stablecoins exchanged on each trade:
+    - 0.25% goes to the smart contractor operator.
+    - 0.75% is proportinally distributed as dividends among the shareholders, i.e., if a holder has 50% of the shares, that holder gets 50% of the dividends.
 
 ## Protocol
  1. Alice generates a private Bitcoin key and a public Bitcoin address.

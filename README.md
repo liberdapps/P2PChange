@@ -15,10 +15,10 @@
 
 ## Incentives
 * Users of the platform will be rewarded with shares on every successful trade they make.
-* A 1% fee will be taken on top of the stablecoins traded in the platform:
+* The smart contract will collect a 1% fee on top of the stablecoins traded in the platform:
     - 0.25% goes to the smart contract mediator, to support the mediation service.
     - 0.75% is proportionally distributed as dividends among the shareholders, i.e., if a holder has 50% of the shares, that holder gets 50% of the dividends.
-* If a user misbehaves, e.g., initiating but never completing trades, sending incorrect amounts or willingly delaying trades, that user will lose shares in the platform, both reducing that user's ability to receive dividends while also automatically  increasing the amount of dividends paid to honest shareholders. 
+* If a user misbehaves, e.g., initiating but never completing trades, sending incorrect amounts or willingly delaying trades, that user will lose shares in the platform, both reducing that user's ability to receive dividends while also increasing the amount of dividends paid to honest shareholders. 
 
 ## Protocol
  1. Alice generates a private Bitcoin key and a public Bitcoin address.

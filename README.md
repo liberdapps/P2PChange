@@ -32,6 +32,7 @@
     - The trade will be automatically flagged as expired (enforced by smart contract rules).
     - Bob will be instructed not to send the Bitcoins, since the trade will be cancelled.
     - The smart contract operator will be able effectively cancel the trade by invoking a method in the smart contract, unlocking Alice's stablecoins.
+    - Bob will lose S shares in the platform (where S = number of stablecoins locked in the trade), reducing his participation in the dividends, since he didn't follow the terms.
  7. If Bob sends the funds before the timeout, he’ll be instructed to wait for the stablecoins to be released (either by Alice or by the smart contract operator).
  8. Alice can release the stablecoins to Bob at anytime, if she sees that Bob has sent the correct amount of Bitcoins and the transaction has enough confirmations (2+). In that case:
     - Alice will be able to withdraw her Bitcoins at anytime, using her private Bitcon key + random number N.
@@ -48,27 +49,50 @@
       * 0.75% is distributed proportionally among the shareholders, including Alice and Bob.
 10. If Alice doesn't release the funds to Bob after 24 hours and the smart contract operator verifies that Bob has sent the **INCORRECT** amount:
     - The smart contract operator will call a method in the smart contract providing the exact amount that Bob has actually sent to Alice.
-    - The smart contract will automatically recalculate how many stablecoins the sent BTC amount corresponds to — calculated using Alice’s Stablecoin/Bitcoin price —, release those to Bob and refund the remaining to Alice. For example, if BOb asks for 500 stablecoins but only send bitcoins wotth of 200 stablecoins, BOb gets 200 stablecoins and 300 stablecoins goes back to Alie.
-    - Bob will lose S shares (where S = number of stablecoins negotiated) since he didn't send the correct amount.
+    - The smart contract will automatically recalculate how many stablecoins the sent BTC amount corresponds to — calculated using Alice’s Stablecoin/Bitcoin price —, release those to Bob and refund the remaining to Alice. For example, if BOb asks for 500 stablecoins but only send bitcoins wotth of 200 stablecoins, Bob gets 200 stablecoins and 300 stablecoins goes back to Alice.
+    - Bob will lose S shares (where S = number of stablecoins negotiated) since he didn't send the correct amount and the operator had to step in.
     - Alice will receive S shares (where S = number of stablecoins negotiated), since she acted correctly.
     - A 1% fee will be taken from the locked stablecoins:
       * 0.25% goes the smart contract operator.
       * 0.75% is distributed proportionally among the shareholders, including Alice and Bob.
 
 
-
- 
 ## Example 1
+* Alice has 500 shares and Bob has 500 shares in the platform.
+* Alice locks 2000 USDT in the platform, offering 1000 USDT per Bitcoin.
+* Bob decides to take 500 USDT from Alice's offer.
+* The platform generates a new Bitcoin address, and instructs Bob to send 0.5 BTC (500 USDT / 1000 USDT) to that address within 30 minutes.
+* Bob does not send the Bitcoins before the 30-minute timeout.
+* The platform warns Bob that the trade has expired and that it will be cancelled, so Bob should no longer send the Bitcoins.
+* The smart contract operator calls a method that will cancel the expired trade, unlocking Alice's stablecoins.
+* Bob will lose 500 shares in the platform for not following the terms, so now Alice stays with her 500 shares and Bob has now 0 shares.
+
+## Example 2
 * Alice has 500 shares, Bob has 0 shares, Charlie has 500 shares in the platform.
 * Alice locks 2000 USDT in the platform, offering 1000 USDT per Bitcoin.
 * Bob decides to take 500 USDT from Alice's offer.
 * The platform generates a new Bitcoin address, and instructs Bob to send 0.5 BTC (500 USDT / 1000 USDT) to that address within 30 minutes.
 * Bob sends 0.5 BTC to that address before the timeout.
-* Alice identifies the payment and releases the stablecoins to Bob.'
+* Alice identifies the payment and releases the stablecoins to Bob.
 * Alice and Bob get 500 shares each, so now Alice has 1000 shares, Bob has 500 shares and Charlie has 500 shares.
 * A fee of 1.25 USDT (0.25% of 500 USDT) is taken and goes to the smart contract operator.
 * A fee of 3.75 USDT (0.75% of 500 USDT) is taken and is distributed proportionally among the sharesholders:
   - Alice gets 3.75 x 50% (1000 shares / 2000 total shares) = 1.875 USDT.
   - Bob gets 3.75 x 25% (500 shares / 2000 total shares) = 0.9375 USDT.
   - Alice gets 3.75 x 25% (500 shares / 2000 total shares) = 0.9375 USDT.
+  
+## Example 3
+* Alice has 500 shares, Bob has 0 shares, Charlie has 500 shares in the platform.
+* Alice locks 2000 USDT in the platform, offering 1000 USDT per Bitcoin.
+* Bob decides to take 500 USDT from Alice's offer.
+* The platform generates a new Bitcoin address, and instructs Bob to send 0.5 BTC (500 USDT / 1000 USDT) to that address within 30 minutes.
+* Bob sends 0.5 BTC to that address before the timeout.
+* Alice doesn't release the stablecoins after 24 hours.
+* Alice and Bob get 500 shares each, so now Alice has 1000 shares, Bob has 500 shares and Charlie has 500 shares.
+* A fee of 1.25 USDT (0.25% of 500 USDT) is taken and goes to the smart contract operator.
+* A fee of 3.75 USDT (0.75% of 500 USDT) is taken and is distributed proportionally among the sharesholders:
+  - Alice gets 3.75 x 50% (1000 shares / 2000 total shares) = 1.875 USDT.
+  - Bob gets 3.75 x 25% (500 shares / 2000 total shares) = 0.9375 USDT.
+  - Alice gets 3.75 x 25% (500 shares / 2000 total shares) = 0.9375 USDT.
+  
 

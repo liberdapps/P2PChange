@@ -1,21 +1,24 @@
-# SwapBTC - Peer-to-Peer and non-custodial Bitcoin <-> Stablecoin exchange
+# P2PChange - Peer-to-Peer, non-KYC, and non-custodial crypto exchange with a reward system
 
 ## Scenario
-* Alice has stablecoins (USDT, USDC, BSUD, DAI or other) and wants Bitcoins.
-* Bob has Bitcoins and wants stablecoins.
+* Alice has stablecoins (USDT, USDC, BSUD, DAI or other) and wants bitcoins.
+* Bob has bitcoins and wants stablecoins.
+* There will be a mediator, specified in a smart contract, who will be able to resolve conflicts between Alice and Bob (if necessary).
 
 ## Security model
-* Users will be able to trade directly, on their own terms, without a central custodian.
+* Alice and Bob will be able to trade directly, on their own terms, without a central custodian.
   - Stablecoins will be managed by a smart contract deployed to the relevant blockchain (Ethereum, Binance Smart Chain, etc).
-  - Users will hold the private keys for their Bitcoin funds.
-* If a trade can't be completed successfully due to some party not fulfilling or only partially fulfilling the terms, the smart contract operator will be able to act to resolve the conflict in a way that each party gets what they rightly own.
-  - In order to minimize the trust needed on the operator, the smart contract will only allow the operator to act if parties can't complete the trade after a reasonable time.
+  - Alice and Bob will control the private keys for their bitcoin funds.
+* If a trade can't be completed successfully due to some party not fulfilling or only partially fulfilling the terms, the smart contract mediator will be able to act and resolve the conflict in a way that each party gets what they rightly own.
+  - In order to minimize trust, the smart contract will only allow the mediator to act if parties can't complete the trade on their own after a reasonable time.
+  - All actions taken by the mediator will be recorded on public blockchains, so anyone can audit them and verify that the mediator is acting honestly.
 
 ## Incentives
-* Users of the platform will be rewarded with shares on every exchange they make.
+* Users of the platform will be rewarded with shares on every successful trade they make.
 * A 1% fee will be taken on top of the stablecoins traded in the platform:
-    - 0.25% goes to the smart contractor operator.
+    - 0.25% goes to the smart contract mediator, to support the mediation service.
     - 0.75% is proportionally distributed as dividends among the shareholders, i.e., if a holder has 50% of the shares, that holder gets 50% of the dividends.
+* If a user misbehaves, e.g., initiating but never completing trades, sending incorrect amounts or willingly delaying trades, that user will lose shares in the platform, both reducing that user's ability to receive dividends while also automatically  increasing the amount of dividends paid to honest shareholders. 
 
 ## Protocol
  1. Alice generates a private Bitcoin key and a public Bitcoin address.
@@ -88,10 +91,12 @@
 * The platform generates a new Bitcoin address, and instructs Bob to send 0.5 BTC (500 USDT / 1000 USDT) to that address within 30 minutes.
 * Bob sends 0.5 BTC to that address before the timeout.
 * Alice doesn't release the stablecoins after 24 hours.
-* Alice and Bob get 500 shares each, so now Alice has 1000 shares, Bob has 500 shares and Charlie has 500 shares.
-* A fee of 1.25 USDT (0.25% of 500 USDT) is taken and goes to the smart contract operator.
-* A fee of 3.75 USDT (0.75% of 500 USDT) is taken and is distributed proportionally among the sharesholders:
-  - Alice gets 3.75 x 50% (1000 shares / 2000 total shares) = 1.875 USDT.
+* The smart contract operator will verify the trade status:
+  - If Bob's transaction has 6+ confirmations by the time the operator checks it, it'll be stated that Alice didn't follow the terms, so:
+    * Alice will lose 500 shares and Bob gets 500 shares, so now Alice has 0 shares, Bob has 500 shares and Charlie has 500 shares.
+    * A fee of 1.25 USDT (0.25% of 500 USDT) is taken and goes to the smart contract operator.  
+    * A fee of 3.75 USDT (0.75% of 500 USDT) is taken and is distributed proportionally among the sharesholders:
+  -  Alice gets 3.75 x 50% (1000 shares / 2000 total shares) = 1.875 USDT.
   - Bob gets 3.75 x 25% (500 shares / 2000 total shares) = 0.9375 USDT.
   - Alice gets 3.75 x 25% (500 shares / 2000 total shares) = 0.9375 USDT.
   

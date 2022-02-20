@@ -1,8 +1,15 @@
 # SwapBTC - Peer-to-Peer and non-custodial Bitcoin <-> Stablecoin exchange
 
 ## Scenario
-* Alice has stablecoins (USDT, USDC, BSUD, DAI or other) and wants to buy Bitcoins.
-* Bob has Bitcoins and wants to sell them for stablecoins.
+* Alice has stablecoins (USDT, USDC, BSUD, DAI or other) and wants Bitcoins.
+* Bob has Bitcoins and wants stablecoins.
+
+## Security model
+* Users will be able to trade directly, on their own terms, without a central custodian.
+  - Stablecoins will be managed by a smart contract deployed an altcoin blockchain (Ethereum, Binance Smart Chain, etc).
+  - Users will hold the private keys for their Bitcoin funds.
+* If a trade can't be completed successfully due to some party not fully or only partially fulfilling the terms, the smart contract operator will be able to act to resolve the conflict in a way that each party gets what they rightly own.
+  - In order to minimize the trust needed on the operator, the smart contract will only allow the operator to act if parties can't complete the trade after a reasonable time.
 
 ## Incentives
 * After a successful trade, both Alice and Bob will receive shares in the platform.

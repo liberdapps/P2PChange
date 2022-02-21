@@ -53,7 +53,7 @@
       * Bob will get the final amount of stablecoins (after the 1% fee).
 10. If Alice doesn't release the funds to Bob after 24 hours and the smart contract mediator verifies that Bob has sent the **INCORRECT** amount: 
     * It'll be clear that Bob didn't follow the terms, so the mediator will call a method in the smart contract providing the exact amount of bitcoins that Bob has actually sent to Alice.
-    * The smart contract will automatically recalculate how many stablecoins the amount of bitcions sent corresponds to — using Alice’s stablecoin/bitcoin price — and refund Alice the extra stablecoins locked. For example, if Bob asks for 500 stablecoins but only send bitcoins worth of 200 stablecoins, 300 stablecoins go back to Alice.
+    * The smart contract will automatically recalculate how many stablecoins the amount of bitcoins corresponds to — using Alice’s stablecoin/bitcoin price — and refund Alice the extra stablecoins locked. For example, if Bob asks for 500 stablecoins but only send bitcoins worth of 200 stablecoins, 300 stablecoins go back to Alice.
     * Bob will lose R shares (where R = number of stablecoins returned to Alice) since he didn't send the correct amount.
     * Alice will receive S shares (where S = number of stablecoins actually traded), since she acted correctly.
     * The smart contract will collect and distribute the 1% fee on top of the stablecoins.
@@ -84,7 +84,7 @@
   * Alice gets 3.75 USDT x 50% (1000 shares / 2000 total shares) = 1.875 USDT.
   * Bob gets 3.75 USDT x 25% (500 shares / 2000 total shares) = 0.9375 USDT.
   * Charlie gets 3.75 USDT x 25% (500 shares / 2000 total shares) = 0.9375 USDT.
-* Bob gets 495 USDT (500 USDT minus 1% fee).  
+* Bob also gets 495 USDT (500 USDT minus 1% fee) from the trade.  
 
   
 ## Example 3
@@ -102,7 +102,7 @@
      * Alice gets no dividends, since she has no shares.
      * Bob gets 3.75 USDT x 50% (500 shares / 1000 total shares) = 1.875 USDT.
      * Charlie gets 3.75 USDT x 50% (50 shares / 1000 total shares) = 1.875 USDT.
-   * Bob gets 495 USDT (500 USDT minus 1% fee).  
+   * Bob also gets 495 USDT (500 USDT minus 1% fee) from the trade.  
   
 ## Example 4
 * Alice has 500 shares and Bob has 500 shares in the platform.
@@ -116,8 +116,8 @@
   * The smart contract recalculates the trade amount from 500 USDT to 400 USDT (0.4 BTC * 1000 USDT/BTC), returning 100 USDT to Alice.
   * Bob loses 100 shares, since he has sen't the incorrect amount and 100 USDT had to be returned to Alice. Bob now has 400 shares.
   * Alice gets 400 shares, since 400 USDT is the new amount of stablecoins being traded. Alice now has 900 shares.
-  * A fee of 0.5 USDT (0.25% of 200 USDT) is taken and goes to the smart contract mediator.  
-  * A fee of 1.5 USDT (0.75% of 200 USDT) is taken and is distributed proportionally among the sharesholders:
-     * Bob gets 1.50 USDT x 31% (400 shares / 1300 total shares) = 0.465 USDT.
-     * Charlie gets 1.50 USDT x 69% (900 shares / 1300 total shares) = 1.035 USDT.
-   * Bob gets 396 USDT (400 USDT minus 1% fee).  
+  * A fee of 1.00 USDT (0.25% of 400 USDT) is taken and goes to the smart contract mediator.  
+  * A fee of 3.00 USDT (0.75% of 400 USDT) is taken and is distributed proportionally among the sharesholders:
+     * Bob gets 3.00 USDT x 31% (400 shares / 1300 total shares) = 0.93 USDT.
+     * Charlie gets 3.00 USDT x 69% (900 shares / 1300 total shares) = 2.07 USDT.
+   * Bob also gets 396 USDT (400 USDT minus 1% fee) from the trade.  
